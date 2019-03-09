@@ -14,7 +14,7 @@ import nsfg
 import thinkstats2
 
 
-def ReadFemPreg(dct_file='2002FemResp.dct',
+def ReadFemResp(dct_file='2002FemResp.dct',
                 dat_file='2002FemResp.dat.gz',
                 nrows=None):
     """Reads the NSFG respondent dataself.
@@ -36,14 +36,21 @@ def CleanFemResp(df):
     """
     pass
 
+def CrossValidate(preg,resp):
+    """Cross validate the pregnancy numbers
+    between the pregnancy file and the respondent one.
+    """
+    pass
+
 
 def main(script):
     """Tests the functions in this module.
 
     script: string script name
     """
-    preg = ReadFemPreg()
-    print(preg.pregnum.value_counts().sum())
+    resp = ReadFemResp()
+    #assert resp.pregnum.value_counts()[1] == 1267
+    print(nsfg.MakePregMap(nsfg.ReadFemPreg()))
     print('%s: All tests passed.' % script)
 
 
